@@ -1,0 +1,321 @@
+/* ================================================================
+   PREMIUM LAYER — micro-interactions, parallax, polish
+   ================================================================ */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  letter-spacing: 0.005em;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.section {
+  padding-block: clamp(4.5rem, 9vw, 8.5rem);
+}
+
+.display {
+  text-wrap: balance;
+}
+
+.lead {
+  text-wrap: pretty;
+  max-width: 38rem;
+}
+
+/* Buttons premium */
+.btn {
+  min-height: 3.1rem;
+  padding: 0.95rem 1.9rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.18) 45%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out);
+  z-index: -1;
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
+}
+
+.btn--primary {
+  box-shadow: 0 8px 28px rgba(200, 37, 58, 0.22);
+}
+
+.btn--primary:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Cards lift + sheen */
+.cat-card,
+.svc-card,
+.test-card,
+.social-card,
+.diff-card {
+  position: relative;
+  transition:
+    transform 0.5s var(--ease-out),
+    box-shadow 0.5s var(--ease-out),
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+.cat-card:hover,
+.svc-card:hover,
+.test-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.cat-card::before,
+.gal-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 42%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cat-card:hover::before,
+.gal-item:hover::before {
+  opacity: 1;
+}
+
+/* Hero cinematic polish */
+.hero {
+  isolation: isolate;
+}
+
+.hero__media {
+  transform: scale(1.04);
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.hero.is-parallax .hero__media {
+  transform: none;
+}
+
+.hero.is-parallax .hero__bg {
+  transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.08);
+}
+
+.hero__content {
+  animation: hero-in 1s var(--ease-out) both;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero__badge {
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(247, 247, 245, 0.16);
+  border-radius: 999px;
+  background: rgba(247, 247, 245, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.page-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -40% auto;
+  width: min(48vw, 28rem);
+  height: min(48vw, 28rem);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 37, 58, 0.22), transparent 68%);
+  pointer-events: none;
+}
+
+/* Nav desktop polish */
+.nav-desktop a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-cta {
+  box-shadow: 0 8px 24px rgba(200, 37, 58, 0.25) !important;
+}
+
+.nav-mobile {
+  background:
+    radial-gradient(ellipse at top right, rgba(200, 37, 58, 0.18), transparent 45%),
+    rgba(14, 13, 12, 0.985);
+}
+
+/* Float WA premium pulse */
+.float-wa {
+  animation: wa-float 3.2s ease-in-out infinite;
+}
+
+.float-wa::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  animation: wa-ring 2.4s ease-out infinite;
+}
+
+@keyframes wa-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes wa-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.float-wa:hover {
+  transform: scale(1.08) translateY(-2px);
+  animation: none;
+}
+
+/* Reveal smoother */
+.reveal {
+  transform: translateY(2rem);
+  filter: blur(2px);
+  transition:
+    opacity 0.85s var(--ease-out),
+    transform 0.85s var(--ease-out),
+    filter 0.85s var(--ease-out);
+}
+
+.reveal.is-visible {
+  filter: none;
+}
+
+.stagger > * {
+  filter: blur(1.5px);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out),
+    filter 0.7s var(--ease-out);
+}
+
+.stagger.is-visible > * {
+  filter: none;
+}
+
+[data-magnetic] {
+  display: inline-flex;
+}
+
+.footer-brand-logo {
+  height: auto;
+  width: min(100%, 11.5rem);
+  max-width: 11.5rem;
+  margin-bottom: 0.85rem;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
+  transition: transform 0.45s var(--ease-out), filter 0.35s ease;
+}
+
+.footer-brand-logo:hover {
+  transform: translateY(-3px) rotate(-1deg);
+  filter: drop-shadow(0 12px 32px rgba(200, 37, 58, 0.35)) brightness(1.08);
+}
+
+.footer-brand {
+  margin-bottom: 0.75rem;
+}
+
+/* Adaptive brand mark glow when header stuck */
+.site-header.is-stuck .brand__name {
+  text-shadow: 0 0 18px rgba(247, 247, 245, 0.18);
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .filter-btn,
+  .nav-toggle,
+  .float-wa {
+    min-height: 2.75rem;
+  }
+
+  .gal-item {
+    min-height: 11rem;
+  }
+}
+
+@media (max-width: 759px) {
+  .hero__media {
+    transform: none !important;
+  }
+
+  .hero.is-parallax .hero__bg {
+    transform: scale(1.12) !important;
+  }
+
+  body::before {
+    opacity: 0.02;
+  }
+
+  .reveal,
+  .stagger > * {
+    filter: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__actions .btn {
+    min-width: 12rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section-head {
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  }
+
+  .cat-card__body,
+  .svc-card,
+  .test-card {
+    padding: 1.65rem 1.6rem 1.75rem;
+  }
+}

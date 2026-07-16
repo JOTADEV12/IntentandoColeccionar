@@ -1,0 +1,201 @@
+/* FAQ · Precios · Shell extras */
+
+.price-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .price-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.price-card {
+  background: var(--paper-elevated);
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.35rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 100%;
+}
+
+.price-card__tier {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 600;
+}
+
+.price-card h3 {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.price-card__from {
+  font-family: var(--display);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.35rem);
+  color: var(--red);
+  line-height: 1;
+}
+
+.price-card__from span {
+  display: block;
+  font-family: var(--body);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-top: 0.35rem;
+  text-transform: uppercase;
+}
+
+.price-card ul {
+  margin: 0.25rem 0 0.5rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+.price-card li + li {
+  margin-top: 0.35rem;
+}
+
+.price-card .btn {
+  margin-top: auto;
+}
+
+.price-note {
+  margin-top: 1.5rem;
+  padding: 1rem 1.15rem;
+  background: var(--stone);
+  border-left: 3px solid var(--brass);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.faq-item {
+  border: 1px solid var(--border);
+  background: var(--paper-elevated);
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.15rem;
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 1.1rem;
+  color: var(--red);
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item__body {
+  padding: 0 1.15rem 1.15rem;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
+
+.faq-item__body p + p {
+  margin-top: 0.65rem;
+}
+
+.story-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .story-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 2.5rem;
+  }
+}
+
+.story-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--ink-soft);
+}
+
+.story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.timeline-row {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .timeline-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.timeline-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+}
+
+.timeline-card strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.35rem;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.timeline-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+/* Badges no verificados: ocultos por defecto si quedara alguno */
+.test-verified {
+  display: none !important;
+}

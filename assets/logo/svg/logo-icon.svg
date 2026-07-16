@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Intentando Coleccionar  IC</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&amp;display=swap');
+      .mono {
+        font-family: 'Rubik Dirt', 'Impact', sans-serif;
+        font-size: 78px;
+        fill: #f7f7f5;
+      }
+    </style>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1c1a"/>
+      <stop offset="100%" stop-color="#121110"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="18" fill="url(#g)"/>
+  <text class="mono" x="14" y="88">IC</text>
+  <path fill="#c8253a" d="M86 92c0.6 8 0.1 14-0.8 20-0.3 2.4 1.8 2.8 2.3 0.3 1.2-6.5 1.5-13 0.7-20.3z"/>
+  <circle cx="104" cy="28" r="5" fill="#c8253a"/>
+</svg>

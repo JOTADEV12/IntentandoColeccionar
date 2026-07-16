@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 120" role="img" aria-labelledby="title">
+  <title id="title">Intentando Coleccionar</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&amp;display=swap');
+      .word {
+        font-family: 'Rubik Dirt', 'Impact', sans-serif;
+        font-size: 54px;
+        fill: #121110;
+        letter-spacing: 2.5px;
+      }
+      .accent { fill: #c8253a; }
+      .drip { fill: #121110; }
+    </style>
+  </defs>
+  <g transform="translate(8 6)">
+    <text class="word" x="0" y="72">INTENTANDO</text>
+    <text class="word" x="318" y="72">COLECCIONAR</text>
+    <circle class="accent" cx="298" cy="58" r="4"/>
+    <path class="drip" d="M42 78c0.8 10 0.2 18-1 26-0.4 3 2.5 3.5 3.1 0.5 1.6-8 2-16 1-26.5z"/>
+    <path class="drip" d="M520 76c1 12 0.2 22-1.2 32-0.5 3.5 2.8 4 3.4 0.5 2-10 2.4-20 1.1-32.5z"/>
+  </g>
+</svg>

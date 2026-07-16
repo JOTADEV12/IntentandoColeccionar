@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-labelledby="title desc">
+  <title id="title">Intentando Coleccionar</title>
+  <desc id="desc">Wordmark apilado estilo graffiti con drips</desc>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&amp;display=swap');
+      .w1 {
+        font-family: 'Rubik Dirt', 'Impact', sans-serif;
+        font-size: 92px;
+        fill: #ffffff;
+        letter-spacing: 2px;
+      }
+      .w2 {
+        font-family: 'Rubik Dirt', 'Impact', sans-serif;
+        font-size: 48px;
+        fill: #ffffff;
+        letter-spacing: 3px;
+      }
+      .drip { fill: #ffffff; }
+    </style>
+  </defs>
+  <g transform="translate(24 18) rotate(-4 300 90)">
+    <text class="w1" x="0" y="88">INTENTANDO</text>
+    <text class="w2" x="118" y="148">COLECCIONAR</text>
+    <!-- paint drips -->
+    <path class="drip" d="M48 96c1.2 10 0.4 18-1.2 28-0.6 3.5 2.8 4.2 3.6 1 2.2-9 2.6-18 1.4-29z"/>
+    <path class="drip" d="M168 94c0.8 12 0.2 22-0.8 32-0.4 3.8 3 4.4 3.5 0.6 1.8-11 2-21 0.8-32.6z"/>
+    <path class="drip" d="M292 96c1 9 0.3 17-1 26-0.5 3.2 2.6 3.8 3.2 0.6 1.8-8.5 2.2-17 1-26.6z"/>
+    <path class="drip" d="M430 92c1.1 14 0.2 26-1.4 38-0.5 4 3.2 4.6 3.7 0.5 2.4-13 2.8-25 1.2-38.5z"/>
+  </g>
+</svg>
