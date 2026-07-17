@@ -41,7 +41,7 @@ PAGES = {
     },
     "sobre-nosotros.html": {
         "title": "Sobre nosotros | Intentando Coleccionar",
-        "description": "Taller colombiano de miniaturas en resina 3D. Historia, proceso, inversión orientativa y FAQ de Intentando Coleccionar.",
+        "description": "Taller colombiano de miniaturas en resina 3D. Historia, proceso, cotización a medida y FAQ de Intentando Coleccionar.",
     },
     "testimonios.html": {
         "title": "Clientes | Intentando Coleccionar",

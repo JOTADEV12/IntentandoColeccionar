@@ -52,7 +52,7 @@ FOOTER = '''  <footer class="site-footer">
           <a href="sobre-nosotros.html">Sobre nosotros</a>
           <a href="testimonios.html">Clientes</a>
           <a href="sobre-nosotros.html#faq">FAQ</a>
-          <a href="sobre-nosotros.html#inversion">Inversión</a>
+          <a href="sobre-nosotros.html#cotizar">Cotizar</a>
         </div>
         <div class="footer-col">
           <h4>Contacto</h4>

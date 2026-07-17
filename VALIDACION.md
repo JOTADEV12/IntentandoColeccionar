@@ -136,7 +136,7 @@ Ideas hechas realidad · Resina 3D de precisión · Personalización sin límite
 ## D) Mejoras posteriores (julio 2026)
 - Tipografía unificada (Anton / Work Sans / JetBrains Mono).  
 - SEO: `canonical`, `og:image`, `twitter:image`, `sitemap.xml`, `robots.txt`, JSON-LD LocalBusiness.  
-- Nosotros: historia de marca, rangos orientativos COP, plazos, FAQ.  
+- Nosotros: historia de marca, cotización a medida (sin precios fijos), FAQ.  
 - Contacto: sin notas internas; checklist de cotización.  
 - Badges “Verificado” retirados.  
 - `srcset` HD donde hay par en `assets/trabajos/hd/`.  
