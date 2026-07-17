@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE_ORIGIN = "https://intentandocoleccionar.com"
+SITE_ORIGIN = "https://intentandocoleccionar.xyz"
 OG_IMAGE = f"{SITE_ORIGIN}/assets/img/hero-tag-brick.webp"
 FONTS = (
     "https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;600"

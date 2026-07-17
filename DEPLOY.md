@@ -1,55 +1,51 @@
-# Deploy en Vercel + dominio
+# Deploy en Vercel — intentandocoleccionar.xyz
 
-Este sitio es **estático** (HTML/CSS/JS). Se publica en [Vercel](https://vercel.com) y el dominio se compra allí mismo.
+Sitio estático listo para Vercel. Dominio configurado en código: **https://intentandocoleccionar.xyz**
 
-## 1. Repo en GitHub (ya listo si hiciste push)
+**Repo:** https://github.com/JOTADEV12/IntentandoColeccionar
 
-Proyecto: conectar el repositorio `RepoColeccionar` (o el nombre que uses) a Vercel.
+---
 
-## 2. Importar en Vercel
+## 1. Importar en Vercel
 
-1. Entra a [vercel.com/new](https://vercel.com/new) e inicia sesión (GitHub).
-2. **Import** el repo.
-3. Framework Preset: **Other** (o déjalo vacío).
-4. Build Command: *(vacío)*.
-5. Output Directory: *(vacío / `.`)*.
-6. Deploy.
+1. [vercel.com/new](https://vercel.com/new) → inicia sesión con GitHub.
+2. Importa **IntentandoColeccionar**.
+3. Framework: **Other** · Build Command: *(vacío)* · Output: *(vacío)*.
+4. Deploy.
 
-Quedarás con una URL temporal tipo:
-`https://repo-coleccionar.vercel.app`
-
-## 3. Comprar dominio en Vercel (económico)
+## 2. Comprar y conectar el dominio
 
 1. Proyecto → **Settings** → **Domains**.
-2. **Buy** / buscar dominio.
-3. Opciones usualmente más baratas (elige la que esté libre y te guste):
-   - `intentandocoleccionar.co`
-   - `intentandocoleccionar.com`
-   - `icoleccionar.com`
-   - `intentando.co`
-4. Completa la compra con tu cuenta Vercel.
-5. Vercel asigna DNS automáticamente al proyecto.
+2. **Buy** → busca: `intentandocoleccionar.xyz`
+3. Completa la compra. Vercel enlaza DNS al proyecto.
+4. Opcional: añade `www.intentandocoleccionar.xyz` y redirige a la raíz (Vercel lo ofrece al agregar el dominio).
 
-## 4. Actualizar SEO al dominio real
+No hace falta cambiar código: canonical, Open Graph, sitemap y JSON-LD ya apuntan a `.xyz`.
 
-Cuando ya tengas el dominio comprado, actualiza `SITE_ORIGIN` en:
+## 3. Verificar tras el deploy
+
+- https://intentandocoleccionar.xyz/
+- https://intentandocoleccionar.xyz/sitemap.xml
+- https://intentandocoleccionar.xyz/robots.txt
+- Compartir enlace (preview OG con imagen del hero)
+
+## 4. Si cambias de dominio en el futuro
+
+Edita `SITE_ORIGIN` en:
 
 - `js/site-config.js`
 - `scripts/apply_site_upgrades.py`
 
-Luego corre:
+Luego:
 
 ```bash
+python scripts/set_domain.py
 python scripts/apply_site_upgrades.py
 ```
 
-Haz commit + push; Vercel redeploya solo.
+Commit + push → Vercel redeploya.
 
-## 5. Mantenimiento local
+## Mantenimiento
 
-- Unificar nav/footer: `python scripts/sync_shell.py`
-- Reaplicar SEO: `python scripts/apply_site_upgrades.py`
-
-## Nota
-
-`netlify.toml` quedó por compatibilidad; el flujo oficial de este proyecto es **Vercel**.
+- Nav/footer: `python scripts/sync_shell.py`
+- SEO global: `python scripts/apply_site_upgrades.py`

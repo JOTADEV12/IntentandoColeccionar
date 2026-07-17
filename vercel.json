@@ -3,6 +3,14 @@
   "framework": null,
   "cleanUrls": false,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.intentandocoleccionar.xyz" }],
+      "destination": "https://intentandocoleccionar.xyz/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://intentandocoleccionar.com/sitemap.xml
+Sitemap: https://intentandocoleccionar.xyz/sitemap.xml
