@@ -227,29 +227,64 @@
   /* Expose WA without wiping experience.js helpers (toast, etc.) */
   window.IC = Object.assign(window.IC || {}, { WA_BASE });
 
-  /* Desktop parallax on hero brick background */
-  const hero = document.querySelector(".hero");
-  const heroBg =
-    document.querySelector(".hero__bg-photo") || document.querySelector(".hero__bg");
+  /* Hero FX: parallax pointer + scroll (mockup A) */
+  const hero = document.querySelector("[data-hero]") || document.querySelector(".hero");
+  const heroImg =
+    document.querySelector("[data-fx-media] img") ||
+    document.querySelector(".hero__fx-media img") ||
+    document.querySelector(".hero__bg-photo img") ||
+    document.querySelector(".hero__bg img");
   const canParallax =
     hero &&
-    heroBg &&
-    window.matchMedia("(min-width: 768px)").matches &&
+    heroImg &&
     !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (canParallax) {
     hero.classList.add("is-parallax");
     let ticking = false;
+    let px = 0;
+    let py = 0;
+
+    const apply = () => {
+      heroImg.style.setProperty("--px", `${px}px`);
+      heroImg.style.setProperty("--py", `${py}px`);
+      ticking = false;
+    };
+
+    if (window.matchMedia("(pointer: fine)").matches) {
+      hero.addEventListener(
+        "pointermove",
+        (e) => {
+          const r = hero.getBoundingClientRect();
+          px = -((e.clientX - r.left) / r.width - 0.5) * 18;
+          py = -((e.clientY - r.top) / r.height - 0.5) * 12;
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(apply);
+          }
+        },
+        { passive: true }
+      );
+      hero.addEventListener("pointerleave", () => {
+        px = 0;
+        py = 0;
+        requestAnimationFrame(apply);
+      });
+    }
+
     window.addEventListener(
       "scroll",
       () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          const y = Math.min(window.scrollY, window.innerHeight);
-          heroBg.style.setProperty("--hero-shift", `${y * 0.22}px`);
-          ticking = false;
-        });
+        const scrollY = Math.min(40, window.scrollY * 0.08);
+        if (!window.matchMedia("(pointer: fine)").matches || px === 0) {
+          py = scrollY;
+        } else {
+          py = py * 0.5 + scrollY;
+        }
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(apply);
+        }
       },
       { passive: true }
     );

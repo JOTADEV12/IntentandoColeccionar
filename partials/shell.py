@@ -43,7 +43,7 @@ FOOTER = '''  <footer class="site-footer">
         <div>
           <img class="footer-brand-logo" src="assets/img/logo-lettering-only.png" alt="" width="220" height="120" decoding="async"/>
           <div class="footer-brand">Intentando<span>&nbsp;Coleccionar</span></div>
-          <p>Piezas únicas en resina 3D. Hecho a mano en Colombia.</p>
+          <p>Réplicas a escala personalizadas y carros 1/43 metalizados. Hecho a mano en Colombia.</p>
         </div>
         <div class="footer-col">
           <h4>Explorar</h4>

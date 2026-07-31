@@ -6,8 +6,20 @@
   "redirects": [
     {
       "source": "/:path*",
+      "has": [{ "type": "host", "value": "intentandocoleccionar.autos" }],
+      "destination": "https://www.intentandocoleccionar.autos/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "intentandocoleccionar.xyz" }],
+      "destination": "https://www.intentandocoleccionar.autos/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
       "has": [{ "type": "host", "value": "www.intentandocoleccionar.xyz" }],
-      "destination": "https://intentandocoleccionar.xyz/:path*",
+      "destination": "https://www.intentandocoleccionar.autos/:path*",
       "permanent": true
     }
   ],

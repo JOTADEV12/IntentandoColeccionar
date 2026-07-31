@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://intentandocoleccionar.xyz/sitemap.xml
+# Assets e imágenes deben poder indexarse (no bloquear /assets/)
+# Solo se excluyen carpetas internas / de borradores
+Disallow: /mockups/
+Disallow: /scripts/
+Disallow: /partials/
+Disallow: /social/
+Disallow: /videos/
+
+Sitemap: https://www.intentandocoleccionar.autos/sitemap.xml

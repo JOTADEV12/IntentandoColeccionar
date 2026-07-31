@@ -53,26 +53,36 @@
     root.className = "ic-preloader";
     root.setAttribute("role", "status");
     root.setAttribute("aria-live", "polite");
-    root.setAttribute("aria-label", "Preparando la vitrina");
+    root.setAttribute("aria-label", "Abriendo la vitrina");
     root.innerHTML = `
       <div class="ic-preloader__stage">
-        <div class="ic-preloader__case" aria-hidden="true">
+        <div class="ic-preloader__case" aria-hidden="true" data-ic-case>
+          <div class="ic-preloader__spotlight"></div>
+          <div class="ic-preloader__shelf"></div>
+          <div class="ic-preloader__shelf"></div>
+          <div class="ic-preloader__piece ic-preloader__piece--1">
+            <img src="assets/trabajos/atos-taxi-bogota.webp" alt="" width="400" height="400" decoding="async"/>
+          </div>
+          <div class="ic-preloader__piece ic-preloader__piece--2">
+            <img src="assets/trabajos/batman-streetwear.webp" alt="" width="400" height="400" decoding="async"/>
+          </div>
+          <div class="ic-preloader__piece ic-preloader__piece--3">
+            <img src="assets/trabajos/civic-verde-ff.webp" alt="" width="400" height="400" decoding="async" fetchpriority="high"/>
+          </div>
+          <div class="ic-preloader__piece ic-preloader__piece--4">
+            <img src="assets/trabajos/clio-negro-escala.webp" alt="" width="400" height="400" decoding="async"/>
+          </div>
+          <div class="ic-preloader__piece ic-preloader__piece--5">
+            <img src="assets/trabajos/diorama-porsche-rosa-dinos.webp" alt="" width="400" height="400" decoding="async"/>
+          </div>
           <div class="ic-preloader__doors">
             <div class="ic-preloader__door ic-preloader__door--l"></div>
             <div class="ic-preloader__door ic-preloader__door--r"></div>
           </div>
-          <img
-            class="ic-preloader__tag"
-            src="assets/img/hero-tag-brick.webp"
-            alt=""
-            width="1920"
-            height="1890"
-            decoding="async"
-            fetchpriority="high"/>
           <div class="ic-preloader__glass"></div>
         </div>
         <p class="ic-preloader__brand">Intentando Coleccionar</p>
-        <p class="ic-preloader__label">Abriendo la vitrina</p>
+        <p class="ic-preloader__label" data-ic-label>Abriendo la vitrina</p>
         <div class="ic-preloader__bar" aria-hidden="true"><span data-ic-bar></span></div>
         <div class="ic-preloader__pct" data-ic-pct>0%</div>
       </div>
@@ -89,10 +99,10 @@
 
     const imgs = [
       ...document.querySelectorAll(
-        'img[fetchpriority="high"], .hero img, .ic-preloader__tag'
+        'img[fetchpriority="high"], .hero img, .ic-preloader__piece img'
       ),
     ]
-      .slice(0, 5)
+      .slice(0, 6)
       .map(
         (img) =>
           new Promise((resolve) => {
@@ -105,21 +115,43 @@
     return Promise.all([fontsReady, ...imgs]);
   };
 
+  const PRELOADER_LABELS = [
+    "Abriendo la vitrina",
+    "Acomodando piezas",
+    "Encendiendo el spotlight",
+    "Lista para coleccionar",
+  ];
+
   const runPreloader = async () => {
     const seen = sessionStorage.getItem(PRELOADER_KEY) === "1";
-    const minMs = reduceMotion ? 200 : seen ? 700 : 1200;
-    const maxMs = reduceMotion ? 400 : seen ? 1600 : 2500;
+    const minMs = reduceMotion ? 200 : seen ? 900 : 1600;
+    const maxMs = reduceMotion ? 400 : seen ? 1800 : 2800;
 
     document.documentElement.classList.add("is-booting");
     const root = mountPreloader();
     const bar = root.querySelector("[data-ic-bar]");
     const pct = root.querySelector("[data-ic-pct]");
+    const label = root.querySelector("[data-ic-label]");
+    const caseEl = root.querySelector("[data-ic-case]");
 
     let progress = 0;
+    let doorsOpened = false;
     const setProgress = (value) => {
       progress = Math.max(progress, Math.min(100, value));
       if (bar) bar.style.width = `${progress}%`;
       if (pct) pct.textContent = `${Math.round(progress)}%`;
+      if (label) {
+        if (progress < 30) label.textContent = PRELOADER_LABELS[0];
+        else if (progress < 55) label.textContent = PRELOADER_LABELS[1];
+        else if (progress < 85) label.textContent = PRELOADER_LABELS[2];
+        else label.textContent = PRELOADER_LABELS[3];
+      }
+      /* Abrir puertas a mitad del progreso (como el mockup) */
+      if (!doorsOpened && progress >= 35) {
+        doorsOpened = true;
+        root.classList.add("is-opening");
+        if (caseEl) caseEl.classList.add("is-open");
+      }
     };
 
     const started = performance.now();
@@ -142,8 +174,9 @@
     window.clearInterval(tick);
     setProgress(100);
     root.classList.add("is-opening");
+    if (caseEl) caseEl.classList.add("is-open");
 
-    await new Promise((r) => window.setTimeout(r, reduceMotion ? 60 : 520));
+    await new Promise((r) => window.setTimeout(r, reduceMotion ? 60 : 720));
     root.classList.add("is-done");
     document.documentElement.classList.remove("is-booting");
     document.documentElement.classList.add("is-ready");
@@ -188,32 +221,33 @@
     modal.setAttribute("aria-labelledby", "ic-social-title");
     modal.innerHTML = `
       <div class="ic-social-modal__panel">
+        <div class="ic-social-modal__aura" aria-hidden="true"></div>
         <button type="button" class="ic-social-modal__close" data-ic-social-close aria-label="Cerrar">×</button>
-        <p class="ic-social-modal__eyebrow">Comunidad coleccionista</p>
+        <p class="ic-social-modal__eyebrow"><span class="ic-social-modal__live" aria-hidden="true"></span> Comunidad coleccionista</p>
         <h2 id="ic-social-title" class="ic-social-modal__title">Mira los últimos trabajos</h2>
         <p class="ic-social-modal__text">
           Cada semana subimos piezas nuevas, procesos y escenas personalizadas.
           Entra a nuestras redes y inspírate con lo que acaba de salir del taller.
         </p>
         <div class="ic-social-modal__grid">
-          <a class="ic-social-modal__link" href="${SOCIAL.facebook}" target="_blank" rel="noopener noreferrer">
-            <span class="ic-social-modal__icon">${icons.facebook}</span>
-            <span><strong>Facebook</strong><span>intentando.coleccionar</span></span>
+          <a class="ic-social-modal__link ic-social-modal__link--facebook" href="${SOCIAL.facebook}" target="_blank" rel="noopener noreferrer">
+            <span class="ic-social-modal__icon ic-social-modal__icon--facebook" aria-hidden="true"><span class="ic-social-modal__metal">${icons.facebook}</span></span>
+            <span class="ic-social-modal__meta"><strong>Facebook</strong><span>intentando.coleccionar</span></span>
             <span class="ic-social-modal__go" aria-hidden="true">↗</span>
           </a>
-          <a class="ic-social-modal__link" href="${SOCIAL.instagram}" target="_blank" rel="noopener noreferrer">
-            <span class="ic-social-modal__icon">${icons.instagram}</span>
-            <span><strong>Instagram</strong><span>@intentando_coleccionar</span></span>
+          <a class="ic-social-modal__link ic-social-modal__link--instagram" href="${SOCIAL.instagram}" target="_blank" rel="noopener noreferrer">
+            <span class="ic-social-modal__icon ic-social-modal__icon--instagram" aria-hidden="true"><span class="ic-social-modal__metal">${icons.instagram}</span></span>
+            <span class="ic-social-modal__meta"><strong>Instagram</strong><span>@intentando_coleccionar</span></span>
             <span class="ic-social-modal__go" aria-hidden="true">↗</span>
           </a>
-          <a class="ic-social-modal__link" href="${SOCIAL.tiktok}" target="_blank" rel="noopener noreferrer">
-            <span class="ic-social-modal__icon">${icons.tiktok}</span>
-            <span><strong>TikTok</strong><span>@intentandocoleccionar</span></span>
+          <a class="ic-social-modal__link ic-social-modal__link--tiktok" href="${SOCIAL.tiktok}" target="_blank" rel="noopener noreferrer">
+            <span class="ic-social-modal__icon ic-social-modal__icon--tiktok" aria-hidden="true"><span class="ic-social-modal__metal">${icons.tiktok}</span></span>
+            <span class="ic-social-modal__meta"><strong>TikTok</strong><span>@intentandocoleccionar</span></span>
             <span class="ic-social-modal__go" aria-hidden="true">↗</span>
           </a>
-          <a class="ic-social-modal__link" href="${SOCIAL.whatsapp}" target="_blank" rel="noopener noreferrer">
-            <span class="ic-social-modal__icon">${icons.whatsapp}</span>
-            <span><strong>WhatsApp</strong><span>Cotiza tu pieza</span></span>
+          <a class="ic-social-modal__link ic-social-modal__link--whatsapp" href="${SOCIAL.whatsapp}" target="_blank" rel="noopener noreferrer">
+            <span class="ic-social-modal__icon ic-social-modal__icon--whatsapp" aria-hidden="true"><span class="ic-social-modal__metal">${icons.whatsapp}</span></span>
+            <span class="ic-social-modal__meta"><strong>WhatsApp</strong><span>Cotiza tu pieza</span></span>
             <span class="ic-social-modal__go" aria-hidden="true">↗</span>
           </a>
         </div>

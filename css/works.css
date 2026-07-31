@@ -92,9 +92,21 @@
   object-fit: cover;
   display: block;
   background: #151312;
+  filter: saturate(0.94);
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s ease;
+}
+
+/* Hover premium (mockup A): zoom sutil + saturación */
+.carousel__card:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.1);
 }
 
 .carousel__card figcaption {
+  position: relative;
+  z-index: 1;
   padding: 1.5rem 1.35rem 1.75rem;
   display: flex;
   flex-direction: column;
