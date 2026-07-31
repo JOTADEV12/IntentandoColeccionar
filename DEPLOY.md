@@ -61,17 +61,57 @@ GA_MEASUREMENT_ID: "G-XXXXXXXXXX",
 
 4. Commit + push → Vercel redeploya.
 
-### D) Google Search Console
+### D) Google Search Console (indexación)
 
-1. [search.google.com/search-console](https://search.google.com/search-console) → Añadir propiedad.
-2. Verifica (DNS en Vercel o meta tag).
-3. Sitemap: `https://TU-DOMINIO/sitemap.xml`.
+#### 1) Crear la propiedad
+
+1. Abre [Google Search Console](https://search.google.com/search-console).
+2. **Añadir propiedad**.
+3. Elige **Prefijo de URL** (recomendado) e introduce exactamente:  
+   `https://www.intentandocoleccionar.autos`
+4. (Opcional) Crea también una propiedad de **dominio** `intentandocoleccionar.autos` si quieres cubrir apex + www; requiere DNS.
+
+#### 2) Verificar la propiedad (elige un método)
+
+**Opción A — Meta tag HTML (rápida, con este repo)**
+
+1. En Search Console elige verificación por **etiqueta HTML**.
+2. Copia solo el valor de `content="..."`.
+3. En la raíz del proyecto:
+
+```bash
+python scripts/set_gsc_verification.py TU_CODIGO_AQUI
+```
+
+4. Commit + push → espera el deploy de Vercel.
+5. Vuelve a Search Console y pulsa **Verificar**.
+
+**Opción B — Registro DNS TXT (buena si usas Vercel Domains)**
+
+1. En Search Console elige verificación por **registro DNS**.
+2. Copia el TXT que te da Google.
+3. Vercel → proyecto → **Settings** → **Domains** → tu dominio → añade el TXT,  
+   o en el DNS del registrador donde esté `.autos`.
+4. Espera propagación (minutos a unas horas) y pulsa **Verificar**.
+
+#### 3) Enviar el sitemap (obligatorio para acelerar)
+
+1. En Search Console → **Sitemaps**.
+2. Añade: `sitemap.xml`  
+   (URL completa: `https://www.intentandocoleccionar.autos/sitemap.xml`)
+3. Envía. Estado esperado: **Correcto** tras el primer rastreo.
+
+#### 4) Comprobaciones útiles
+
+- **Inspección de URL** → prueba `https://www.intentandocoleccionar.autos/` → “Solicitar indexación”.
+- Confirma que `robots.txt` y `sitemap.xml` en producción usan `.autos` (no `.xyz`).
+- Enlace canónico de cada página = `www.intentandocoleccionar.autos`.
 
 ## 4. Verificar tras el deploy
 
-- `https://TU-DOMINIO/`
-- `https://TU-DOMINIO/sitemap.xml`
-- `https://TU-DOMINIO/robots.txt`
+- `https://www.intentandocoleccionar.autos/`
+- `https://www.intentandocoleccionar.autos/sitemap.xml`
+- `https://www.intentandocoleccionar.autos/robots.txt`
 - Vercel → **Analytics** (tras unas visitas reales)
 
 ## 5. Si cambias de dominio (p. ej. a .com)
