@@ -256,7 +256,7 @@
             <span class="ic-social-modal__go" aria-hidden="true">↗</span>
           </a>
         </div>
-        <a class="ic-social-modal__watch" href="${document.getElementById("del-taller") ? "#del-taller" : "/index.html#del-taller"}" data-ic-social-close>Ver videos en el sitio</a>
+        <a class="ic-social-modal__watch" href="${document.getElementById("del-taller") ? "#del-taller" : "index.html#del-taller"}" data-ic-social-close>Ver videos en el sitio</a>
         <button type="button" class="ic-social-modal__skip" data-ic-social-close>Seguir explorando el sitio</button>
       </div>
     `;
