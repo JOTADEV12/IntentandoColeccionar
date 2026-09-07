@@ -1,0 +1,126 @@
+/* Official social embeds — grid / cards / players only */
+
+#del-taller {
+  scroll-margin-top: calc(var(--nav-h) + 0.75rem);
+}
+
+.social-feed {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .social-feed {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .social-feed {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.social-embed {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--paper-elevated);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.social-embed--featured {
+  border-color: color-mix(in srgb, var(--brass) 45%, var(--border));
+}
+
+.social-embed > .social-card__platform {
+  margin: 0;
+  padding: 0.7rem 0.9rem 0.55rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.social-embed__frame {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: var(--ink-soft);
+  border-top: 1px solid var(--border);
+}
+
+.social-embed__frame .tiktok-embed,
+.social-embed__frame .instagram-media {
+  position: absolute !important;
+  inset: 0 !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.social-embed__frame iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  border: 0;
+}
+
+.social-embed__frame--fallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  padding: 1.15rem 1.1rem 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(14, 13, 12, 0.08), rgba(14, 13, 12, 0.55)),
+    var(--graphite);
+}
+
+.social-embed__title {
+  font-family: var(--heading);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--paper);
+}
+
+.social-embed__open {
+  font-family: var(--heading);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.social-embed__open:hover {
+  color: var(--paper);
+}
+
+.social-feed__error {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 1.25rem 1.1rem;
+  border: 1px solid var(--border);
+  background: var(--paper-elevated);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-embed,
+  .social-embed__frame,
+  .social-embed__open {
+    transition: none;
+  }
+}

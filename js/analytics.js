@@ -92,6 +92,18 @@
           path: location.pathname || "/",
         });
       }
+      if (a.closest("[data-social-feed]") && /tiktok\.com|instagram\.com|facebook\.com/i.test(href)) {
+        var platform = /tiktok\.com/i.test(href)
+          ? "tiktok"
+          : /instagram\.com/i.test(href)
+            ? "instagram"
+            : "facebook";
+        var card = a.closest("[data-social-id]");
+        trackEvent("social_embed_click", {
+          platform: platform,
+          id: card ? card.getAttribute("data-social-id") || "" : "",
+        });
+      }
     },
     true
   );

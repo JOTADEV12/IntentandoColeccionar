@@ -700,6 +700,7 @@ html.is-booting .hero__stage {
 .ic-social-modal__title,
 .ic-social-modal__text,
 .ic-social-modal__grid,
+.ic-social-modal__watch,
 .ic-social-modal__skip {
   position: relative;
   z-index: 1;
@@ -962,6 +963,37 @@ html.is-booting .hero__stage {
   transform: translate(2px, -2px);
 }
 
+.ic-social-modal__watch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  min-height: 2.6rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(243, 239, 232, 0.28);
+  background: transparent;
+  color: #f3efe8;
+  font-family: "Work Sans", system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: border-color var(--motion-fast) ease, background var(--motion-fast) ease;
+}
+
+.ic-social-modal.is-open .ic-social-modal__watch {
+  animation: ic-social-rise 0.55s var(--ease-out) 0.76s forwards;
+}
+
+.ic-social-modal__watch:hover {
+  border-color: rgba(243, 239, 232, 0.7);
+  background: rgba(243, 239, 232, 0.06);
+}
+
 .ic-social-modal__skip {
   display: block;
   width: 100%;
@@ -1054,6 +1086,7 @@ html.is-booting .hero__stage {
   .ic-social-modal.is-open .ic-social-modal__title,
   .ic-social-modal.is-open .ic-social-modal__text,
   .ic-social-modal.is-open .ic-social-modal__link,
+  .ic-social-modal.is-open .ic-social-modal__watch,
   .ic-social-modal.is-open .ic-social-modal__skip {
     opacity: 1 !important;
     transform: none !important;

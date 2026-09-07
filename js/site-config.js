@@ -14,6 +14,12 @@
 window.IC_SITE = Object.freeze({
   SITE_ORIGIN: "https://www.intentandocoleccionar.autos",
   WA: "573115152006",
+  SOCIAL: Object.freeze({
+    facebook: "https://www.facebook.com/intentando.coleccionar",
+    instagram: "https://www.instagram.com/intentando_coleccionar/",
+    tiktok: "https://www.tiktok.com/@intentandocoleccionar",
+    whatsapp: "573115152006"
+  }),
   OG_IMAGE: "assets/img/hero-tag-brick.webp",
   GA_MEASUREMENT_ID: "",
   GOOGLE_SITE_VERIFICATION: "",

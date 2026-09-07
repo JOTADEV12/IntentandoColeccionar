@@ -1,0 +1,45 @@
+{
+  "updated": "2026-09-06",
+  "tiktokProfile": "https://www.tiktok.com/@intentandocoleccionar",
+  "instagramProfile": "https://www.instagram.com/intentando_coleccionar/",
+  "facebookPage": "https://www.facebook.com/intentando.coleccionar",
+  "items": [
+    {
+      "id": "tt-sprint",
+      "platform": "tiktok",
+      "url": "https://www.tiktok.com/@intentandocoleccionar/video/7659996575640390932",
+      "title": "Chevrolet Sprint escala 1/43",
+      "featured": true
+    },
+    {
+      "id": "tt-swift",
+      "platform": "tiktok",
+      "url": "https://www.tiktok.com/@intentandocoleccionar/video/7675563664593784084",
+      "title": "Chevrolet Swift escala 1/43"
+    },
+    {
+      "id": "tt-aveo",
+      "platform": "tiktok",
+      "url": "https://www.tiktok.com/@intentandocoleccionar/video/7680001573728128277",
+      "title": "Aveo escala 1/43"
+    },
+    {
+      "id": "ig-reel-003",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/reel/DZG1ZhyxvZ3/",
+      "title": "Reel del taller"
+    },
+    {
+      "id": "ig-reel-001",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/reel/Daeh-1ONUfp/",
+      "title": "Reel reciente del taller"
+    },
+    {
+      "id": "ig-reel-002",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/reel/DaQOft3gV6s/",
+      "title": "Trabajo terminado"
+    }
+  ]
+}

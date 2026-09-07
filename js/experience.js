@@ -187,12 +187,17 @@
   };
 
   /* ---------- Social invite popup ---------- */
+  const cfg = window.IC_SITE || {};
+  const cfgSocial = cfg.SOCIAL || {};
+  const waNumber = String(cfgSocial.whatsapp || cfg.WA || "573115152006").replace(/\D/g, "") || "573115152006";
   const SOCIAL = {
-    facebook: "https://www.facebook.com/intentando.coleccionar",
-    instagram: "https://www.instagram.com/intentando_coleccionar/",
-    tiktok: "https://www.tiktok.com/@intentandocoleccionar",
+    facebook: cfgSocial.facebook || "https://www.facebook.com/intentando.coleccionar",
+    instagram: cfgSocial.instagram || "https://www.instagram.com/intentando_coleccionar/",
+    tiktok: cfgSocial.tiktok || "https://www.tiktok.com/@intentandocoleccionar",
     whatsapp:
-      "https://wa.me/573115152006?text=" +
+      "https://wa.me/" +
+      waNumber +
+      "?text=" +
       encodeURIComponent("Hola, quiero cotizar una pieza personalizada"),
   };
 
@@ -224,10 +229,10 @@
         <div class="ic-social-modal__aura" aria-hidden="true"></div>
         <button type="button" class="ic-social-modal__close" data-ic-social-close aria-label="Cerrar">×</button>
         <p class="ic-social-modal__eyebrow"><span class="ic-social-modal__live" aria-hidden="true"></span> Comunidad coleccionista</p>
-        <h2 id="ic-social-title" class="ic-social-modal__title">Mira los últimos trabajos</h2>
+        <h2 id="ic-social-title" class="ic-social-modal__title">Síguenos en redes</h2>
         <p class="ic-social-modal__text">
-          Cada semana subimos piezas nuevas, procesos y escenas personalizadas.
-          Entra a nuestras redes y inspírate con lo que acaba de salir del taller.
+          Los últimos trabajos ya se ven en el inicio, en la sección Del taller.
+          Estas redes son para seguir el día a día del taller: procesos, encargos y piezas nuevas.
         </p>
         <div class="ic-social-modal__grid">
           <a class="ic-social-modal__link ic-social-modal__link--facebook" href="${SOCIAL.facebook}" target="_blank" rel="noopener noreferrer">
@@ -251,6 +256,7 @@
             <span class="ic-social-modal__go" aria-hidden="true">↗</span>
           </a>
         </div>
+        <a class="ic-social-modal__watch" href="${document.getElementById("del-taller") ? "#del-taller" : "/index.html#del-taller"}" data-ic-social-close>Ver videos en el sitio</a>
         <button type="button" class="ic-social-modal__skip" data-ic-social-close>Seguir explorando el sitio</button>
       </div>
     `;
@@ -263,7 +269,17 @@
     };
 
     modal.querySelectorAll("[data-ic-social-close]").forEach((btn) => {
-      btn.addEventListener("click", close);
+      btn.addEventListener("click", (e) => {
+        const href = btn.getAttribute("href") || "";
+        close();
+        if (href.charAt(0) === "#") {
+          const target = document.getElementById(href.slice(1));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+          }
+        }
+      });
     });
     modal.addEventListener("click", (e) => {
       if (e.target === modal) close();
